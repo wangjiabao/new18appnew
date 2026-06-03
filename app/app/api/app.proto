@@ -1,0 +1,1059 @@
+syntax = "proto3";
+
+package api;
+
+//import "validate/validate.proto";
+import "google/api/annotations.proto";
+
+option go_package = "/api;api";
+option java_multiple_files = true;
+option java_package = "api";
+
+service App {
+	rpc EthAuthorize (EthAuthorizeRequest) returns (EthAuthorizeReply) {
+		option (google.api.http) = {
+			post: "/api/app_server/eth_authorize"
+			body: "send_body"
+		};
+	};
+
+	rpc UserRecommend (RecommendListRequest) returns (RecommendListReply) {
+		option (google.api.http) = {
+			get: "/api/app_server/recommend_list"
+		};
+	};
+
+	rpc UserInfo (UserInfoRequest) returns (UserInfoReply) {
+		option (google.api.http) = {
+			get: "/api/app_server/user_info"
+		};
+	};
+
+	rpc Buy (BuyRequest) returns (BuyReply) {
+		option (google.api.http) = {
+			post: "/api/app_server/buy"
+			body: "send_body"
+		};
+	};
+
+	rpc BuyTwo (BuyRequest) returns (BuyReply) {
+		option (google.api.http) = {
+			post: "/api/app_server/buy_two"
+			body: "send_body"
+		};
+	};
+
+	rpc SetAddress (SetAddressRequest) returns (SetAddressReply) {
+		option (google.api.http) = {
+			post: "/api/app_server/set_address"
+			body: "send_body"
+		};
+	};
+
+	rpc DeleteAddress (DeleteAddressRequest) returns (DeleteAddressReply) {
+		option (google.api.http) = {
+			post: "/api/app_server/delete_address"
+			body: "send_body"
+		};
+	};
+
+	rpc BuyThree (BuyRequest) returns (BuyReply) {
+		option (google.api.http) = {
+			post: "/api/app_server/buy_three"
+			body: "send_body"
+		};
+	};
+
+	rpc BuyFour (BuyRequest) returns (BuyReply) {
+		option (google.api.http) = {
+			post: "/api/app_server/buy_four"
+			body: "send_body"
+		};
+	};
+
+	rpc SetToday (SetTodayRequest) returns (SetTodayReply) {
+		option (google.api.http) = {
+			post: "/api/app_server/set_today"
+			body: "send_body"
+		};
+	};
+
+	rpc SetTodayList (SetTodayListRequest) returns (SetTodayListReply) {
+		option (google.api.http) = {
+			get: "/api/app_server/set_today_list"
+		};
+	};
+
+	rpc Withdraw (WithdrawRequest) returns (WithdrawReply) {
+		option (google.api.http) = {
+			post: "/api/app_server/withdraw"
+			body: "send_body"
+		};
+	};
+
+	rpc SetInfo (SetInfoRequest) returns (SetInfoReply) {
+		option (google.api.http) = {
+			post: "/api/app_server/set_info"
+			body: "send_body"
+		};
+	};
+
+	rpc WithdrawList (WithdrawListRequest) returns (WithdrawListReply) {
+		option (google.api.http) = {
+			get: "/api/app_server/withdraw_list"
+		};
+	};
+
+	//  订单
+	rpc OrderList (OrderListRequest) returns (OrderListReply) {
+		option (google.api.http) = {
+			get: "/api/app_server/order_list"
+		};
+	};
+
+	//  订单
+	rpc OrderFourList (OrderFourListRequest) returns (OrderFourListReply) {
+		option (google.api.http) = {
+			get: "/api/app_server/order_four_list"
+		};
+	};
+
+	rpc OrderTwoList (OrderTwoListRequest) returns (OrderTwoListReply) {
+		option (google.api.http) = {
+			get: "/api/app_server/order_two_list"
+		};
+	};
+
+	rpc OrderThreeList (OrderTwoListRequest) returns (OrderTwoListReply) {
+		option (google.api.http) = {
+			get: "/api/app_server/order_three_list"
+		};
+	};
+
+	// 交易明细
+	rpc RewardList (RewardListRequest) returns (RewardListReply) {
+		option (google.api.http) = {
+			get: "/api/app_server/reward_list"
+		};
+	};
+	//
+
+	// 交易明细
+	rpc DepositList (DepositListRequest) returns (DepositListReply) {
+		option (google.api.http) = {
+			get: "/api/app_server/deposit_list"
+		};
+	};
+
+	rpc RecommendUpdate (RecommendUpdateRequest) returns (RecommendUpdateReply) {
+		option (google.api.http) = {
+			post: "/api/app_server/recommend_update"
+			body: "send_body"
+		};
+	};
+
+	rpc UserArea (UserAreaRequest) returns (UserAreaReply) {
+		option (google.api.http) = {
+			get: "/api/app_server/user_area"
+		};
+	};
+
+	rpc RecommendRewardList (RecommendRewardListRequest) returns (RecommendRewardListReply) {
+		option (google.api.http) = {
+			get: "/api/app_server/recommend_reward_list"
+		};
+	};
+
+	rpc FeeRewardList (FeeRewardListRequest) returns (FeeRewardListReply) {
+		option (google.api.http) = {
+			get: "/api/app_server/fee_reward_list"
+		};
+	};
+
+
+	rpc TradeList (TradeListRequest) returns (TradeListReply) {
+		option (google.api.http) = {
+			get: "/api/app_server/trade_list"
+		};
+	};
+
+	rpc TranList (TranListRequest) returns (TranListReply) {
+		option (google.api.http) = {
+			get: "/api/app_server/tran_list"
+		};
+	};
+
+
+	rpc PasswordChange (PasswordChangeRequest) returns (PasswordChangeReply) {
+		option (google.api.http) = {
+			post: "/api/app_server/password_change"
+			body: "send_body"
+		};
+	};
+
+	rpc Exchange (ExchangeRequest) returns (ExchangeReply) {
+		option (google.api.http) = {
+			post: "/api/app_server/exchange"
+			body: "send_body"
+		};
+	};
+
+	rpc Trade (WithdrawRequest) returns (WithdrawReply) {
+		option (google.api.http) = {
+			post: "/api/app_server/trade"
+			body: "send_body"
+		};
+	};
+
+	rpc Tran (TranRequest) returns (TranReply) {
+		option (google.api.http) = {
+			post: "/api/app_server/tran"
+			body: "send_body"
+		};
+	};
+
+	rpc GetTrade (GetTradeRequest) returns (GetTradeReply) {
+		option (google.api.http) = {
+			post: "/api/app_server/get_trade"
+			body: "send_body"
+		};
+	};
+
+	rpc SetBalanceReward(SetBalanceRewardRequest) returns (SetBalanceRewardReply) {
+		option (google.api.http) = {
+			post: "/api/app_server/set_balance_reward"
+			body: "send_body"
+		};
+	};
+
+	rpc DeleteBalanceReward(DeleteBalanceRewardRequest) returns (DeleteBalanceRewardReply) {
+		option (google.api.http) = {
+			post: "/api/app_server/delete_balance_reward"
+			body: "send_body"
+		};
+	};
+
+	rpc Deposit (DepositRequest) returns (DepositReply) {
+		option (google.api.http) = {
+			get: "/api/admin_dhb/deposit"
+		};
+	};
+//
+//	rpc AdminRewardList (AdminRewardListRequest) returns (AdminRewardListReply) {
+//		option (google.api.http) = {
+//			get: "/api/admin_dhb/reward_list"
+//		};
+//	};
+//
+//	rpc AdminUserList (AdminUserListRequest) returns (AdminUserListReply) {
+//		option (google.api.http) = {
+//			get: "/api/admin_dhb/user_list"
+//		};
+//	};
+//
+//	rpc AdminLocationList (AdminLocationListRequest) returns (AdminLocationListReply) {
+//		option (google.api.http) = {
+//			get: "/api/admin_dhb/location_list"
+//		};
+//	};
+//
+//	rpc AdminWithdrawList (AdminWithdrawListRequest) returns (AdminWithdrawListReply) {
+//		option (google.api.http) = {
+//			get: "/api/admin_dhb/withdraw_list"
+//		};
+//	};
+//
+	rpc AdminWithdraw (AdminWithdrawRequest) returns (AdminWithdrawReply) {
+		option (google.api.http) = {
+			get: "/api/admin_dhb/withdraw"
+		};
+	};
+
+	rpc AdminWithdrawEth (AdminWithdrawEthRequest) returns (AdminWithdrawEthReply) {
+		option (google.api.http) = {
+			get: "/api/admin_dhb/withdraw_eth"
+		};
+	};
+
+	rpc AdminFee (AdminFeeRequest) returns (AdminFeeReply) {
+		option (google.api.http) = {
+			get: "/api/admin_dhb/fee"
+		};
+	};
+
+	rpc TokenWithdraw (TokenWithdrawRequest) returns (TokenWithdrawReply) {
+		option (google.api.http) = {
+			get: "/api/app_server/token_withdraw"
+		};
+	};
+
+	rpc AmountTo (AmountToRequest) returns (AmountToReply) {
+		option (google.api.http) = {
+			post: "/api/app_server/amount_to"
+			body: "send_body"
+		};
+	};
+
+	rpc Stake (StakeRequest) returns (StakeReply) {
+		option (google.api.http) = {
+			post: "/api/app_server/stake"
+			body: "send_body"
+		};
+	};
+
+	rpc UnStake (UnStakeRequest) returns (UnStakeReply) {
+		option (google.api.http) = {
+			post: "/api/app_server/un_stake"
+			body: "send_body"
+		};
+	};
+//
+//	rpc AdminAll (AdminAllRequest) returns (AdminAllReply) {
+//		option (google.api.http) = {
+//			get: "/api/admin_dhb/all"
+//		};
+//	};
+//
+//	rpc AdminUserRecommend (AdminUserRecommendRequest) returns (AdminUserRecommendReply) {
+//		option (google.api.http) = {
+//			get: "/api/admin_dhb/user_recommend"
+//		};
+//	};
+//
+//	rpc AdminMonthRecommend (AdminMonthRecommendRequest) returns (AdminMonthRecommendReply) {
+//		option (google.api.http) = {
+//			get: "/api/admin_dhb/month_recommend"
+//		};
+//	};
+//
+//	rpc AdminConfig (AdminConfigRequest) returns (AdminConfigReply) {
+//		option (google.api.http) = {
+//			get: "/api/admin_dhb/config"
+//		};
+//	};
+//
+//	rpc AdminConfigUpdate (AdminConfigUpdateRequest) returns (AdminConfigUpdateReply) {
+//		option (google.api.http) = {
+//			post: "/api/admin_dhb/config_update"
+//			body: "send_body"
+//		};
+//	};
+
+}
+
+message SetTodayRequest {
+	message SendBody{
+		string sign = 4;
+	}
+
+	SendBody send_body = 1;
+}
+
+message SetTodayReply {
+	string status = 1;
+}
+
+message BuyRequest {
+	message SendBody{
+		string sign = 4;
+		int64 id = 2;
+		uint64 full = 3;
+		uint64 addressId = 5;
+		uint64 amount = 6;
+	}
+
+	SendBody send_body = 1;
+}
+
+message BuyReply {
+	string status = 1;
+}
+
+message SetAddressRequest {
+	message SendBody{
+		string sign = 3; // 签名
+
+		string country = 1; // 国家
+		string province = 4; // 省份
+		string city = 2; // 城市
+		string area = 8; // 区
+		string detail = 7; // 详情
+		string name = 5; // 收件人
+		string phone = 6; // 手机号
+	}
+
+	SendBody send_body = 1;
+}
+
+message SetAddressReply {
+	string status = 1;
+}
+
+
+message DeleteAddressRequest {
+	message SendBody{
+		int64 id = 2; // 收件信息id
+		string sign = 3; // 签名
+	}
+
+	SendBody send_body = 1;
+}
+
+message DeleteAddressReply {
+	string status = 1;
+}
+
+message AmountToRequest {
+	message SendBody{
+		uint64 amount = 1;
+		string address = 3;
+		string sign = 4;
+	}
+
+	SendBody send_body = 1;
+}
+
+message AmountToReply {
+	string status = 1;
+}
+
+message StakeRequest {
+	message SendBody{
+		uint64 day = 1;
+		uint64 amount = 6;
+		string sign = 4;
+		string publicKey = 5;
+	}
+
+	SendBody send_body = 1;
+}
+
+message StakeReply {
+	string status = 1;
+}
+
+message UnStakeRequest {
+	message SendBody{
+		uint64 id = 1;
+		string sign = 4;
+		string publicKey = 5;
+	}
+
+	SendBody send_body = 1;
+}
+
+message UnStakeReply {
+	string status = 1;
+}
+
+message EthAuthorizeRequest {
+	message SendBody{
+		string address = 1;
+		string code = 2;
+		string password = 3;
+		string sign = 4;
+		string publicKey = 5;
+	}
+
+	SendBody send_body = 1;
+}
+
+message EthAuthorizeReply {
+	string token = 1;
+	string status = 2;
+}
+
+message RecommendUpdateRequest {
+	message SendBody{
+		string code = 1;
+		string sign = 2;
+		string publicKey = 5;
+	}
+
+	SendBody send_body = 1;
+}
+
+message RecommendUpdateReply {
+	string inviteUserAddress = 1;
+}
+
+message DepositRequest {
+}
+
+message DepositReply {
+}
+
+message UserAreaRequest {
+	int64 locationId = 1;
+}
+
+message UserAreaReply {
+	repeated List area = 52; // 购买记录
+	message List {
+		string address = 2; // 收益
+		int64 locationId = 3;
+		int64 countLow = 4;
+	}
+}
+
+
+message UserInfoRequest {
+
+}
+
+message UserInfoReply {
+	string status = 11;
+
+	// 我的节点
+	uint64 level = 6; // 级别
+	uint64 locationNum = 4; // 分享节点
+	string total = 5; // 总业绩
+	string max = 24;// 大区业绩
+	string min = 25;// 小区业绩
+	string inviteUserAddress = 15; // 推荐人
+
+	// 我的收益
+	string buy = 1; // 节点
+	string amountGetSub = 2;// 待产出
+	string amountGet = 7; // 已产出
+	uint64 outNum = 8; // 出局次数
+	string location = 9; // 静态收益
+	string recommend = 10; // 直推收益
+	string recommendTwo = 14; // 直推加速
+	string team = 16; // 团队收益
+	string teamTwo = 17; // 平级收益
+	string all = 18; // 全网收益
+
+	string amountUsdt = 210; // 充值usdt余额
+	string usdt = 21; // usdt余额
+	double withdrawRate = 22; // usdt提现手续费
+	double withdrawMin = 23; // usdt最小提现
+
+	string raw = 31; // ispay余额
+	double withdrawRateTwo = 32; // ispay提现手续费
+	double withdrawMinTwo = 33; // ispay最小提现
+	string rawNew = 34; // ispay余额
+
+	string one = 40; // 国家
+	string two = 41; // 省份
+	string three = 42; // 城市
+	string four = 43; // 区域
+	string five = 44; // 详情
+	string six = 45; // 收件人手机
+	string seven = 46; // 收件人
+
+	string notice = 47; //  公告内容
+	repeated List goods = 48; // ido
+	message List {
+		int64 id = 6;
+		string one = 1; // 商品名称
+		string two = 2; // 商品描述
+		string three = 3; // 商品图片
+		uint64 four = 4; // 商品金额
+		string five = 5; // 商品大段描述
+	}
+	repeated List goodsTwo = 49; // ido
+	repeated List goodsThree = 50; // ido
+
+	repeated ListAddress userAddress = 51; // 地址列表
+	message ListAddress {
+		uint64 id = 6; // id
+		string city = 1; // 城市
+		string country = 2; // 国家
+		string province = 3; // 省份
+		string area = 8;
+		string detail = 7; // 详情
+		string name = 4; // 收件人
+		string phone = 5; // 手机
+	}
+
+	string priceOne = 140;
+	string priceTwo = 141;
+	string priceThree = 142;
+	string priceFour = 143;
+	string priceFive = 144;
+	string priceSix = 145;
+
+	string ispayAmount = 155;
+}
+
+message DepositListRequest {
+	uint64 page = 1; // 页数
+}
+
+message DepositListReply {
+	string status = 4;
+	uint64 count = 3; // 总数，每页20
+	repeated List list = 1;
+	message List {
+		string createdAt = 1; // 时间
+		string amount = 2; // 数量usdt
+	}
+}
+
+
+message RewardListRequest {
+	uint64 page = 1; // 页数
+	uint64 reqType = 2; // 类型：1认购，9医疗商品认购，10web3认购，2静态收益，3直推收益，4直推加速收益，5团代收益，6平级收益，7全网收益，8赠送ispay，12长寿商店认购推荐收益，13长寿商店认购
+}
+
+message RewardListReply {
+	string status = 4;
+	uint64 count = 3; // 总数，每页20
+	repeated List list = 1;
+	message List {
+		string createdAt = 1; // 时间
+		string name = 6; // 名字
+		string amount = 2; // 数量usdt 1-7 需要展示
+		string amountTwo = 3; // 数量ispay 2-8需要展示
+		string address = 4; // 下级地址 3-6需要展示
+		uint64 num = 5; //  代数 4-6需要展示
+	}
+}
+
+message GetTradeRequest {
+	message SendBody{
+		string amount = 1;
+	}
+
+	SendBody send_body = 1;
+}
+
+message GetTradeReply {
+	string amountCsd = 1;
+	string amountHbs = 2;
+}
+
+message RecommendRewardListRequest {
+}
+
+message RecommendRewardListReply {
+	repeated List rewards = 1;
+	message List {
+		string created_at = 1;
+		string amount = 2;
+		string type = 4;
+		string reason = 3;
+	}
+}
+
+message FeeRewardListRequest {
+}
+
+message  FeeRewardListReply {
+	repeated List rewards = 1;
+	message List {
+		string created_at = 1;
+		string amount = 2;
+	}
+}
+
+message SetTodayListRequest {
+	uint64 page = 1; // 页数
+}
+
+message SetTodayListReply {
+	string status = 2;
+	uint64 count = 3; // 总数，每页20
+	repeated List list = 1;
+	message List {
+		string createdAt = 1; // 签到时间
+		string amount = 2; // 签到奖励
+	}
+}
+
+message WithdrawListRequest {
+	uint64 page = 1; // 页数
+	uint64 coinType = 2;
+}
+
+message WithdrawListReply {
+	uint64 count = 3; // 总数，每页20
+	string status = 2;
+	repeated List list = 1;
+	message List {
+		string createdAt = 1; // 时间
+		string amount = 2; // 金额
+	}
+}
+
+message OrderListRequest {
+	uint64 page = 1; // 页数
+}
+
+message OrderListReply {
+	uint64 count = 3; // 总数，每页20
+	string status = 2;
+	repeated List list = 1;
+	message List {
+		string createdAt = 1; // 时间
+		string amount = 2; // 金额
+		string amountGet = 4; // 已释放
+		string amountLast = 5; // 待释放
+		string num = 6; // 倍率
+		uint64 status = 3; // 1收益中 2已出局
+		string one = 10; // 收件地址
+		string two = 11; // 收件人手机
+		string three = 12; // 收件人
+		string four = 13; // 商品名称
+		string five = 14; // 商品描述
+		string six = 15; // 商品图片
+
+	}
+}
+
+message OrderFourListRequest {
+	uint64 page = 1; // 页数
+}
+
+message OrderFourListReply {
+	uint64 count = 3; // 总数，每页20
+	string status = 2;
+	repeated List list = 1;
+	message List {
+		string createdAt = 1; // 时间
+		uint64 amount = 2; // 金额
+		string amountGet = 4; // 已释放
+		string amountLast = 5; // 待释放
+	}
+}
+
+message OrderTwoListRequest {
+	uint64 page = 1; // 页数
+	uint64 orderType = 2; // 0全部 1未发货 2已发货 3已送达
+}
+
+message OrderTwoListReply {
+	uint64 count = 3; // 总数，每页20
+	string status = 2;
+	repeated List list = 1;
+	message List {
+		string createdAt = 1; // 时间
+		string amount = 2; // 金额
+		string country = 111; // 国家
+		string province = 4; // 省份
+		string city = 211; // 城市
+		string area = 8; // 区
+		string detail = 7; // 详情
+		string name = 5; // 收件人
+		string phone = 6; // 手机号
+		string four = 13; // 商品名称
+		string five = 14; // 商品描述
+		string six = 15; // 商品图片
+		uint64 orderType = 16; //1未发货 2已发货，3已送达
+	}
+}
+
+message TradeListRequest {
+}
+
+message TradeListReply {
+	repeated List trade = 1;
+	message List {
+		string created_at = 1;
+		string amountCsd = 2;
+		string amountHbs = 5;
+		string status = 4;
+	}
+}
+
+message TranListRequest {
+	string type = 1;
+	string tran = 2;
+}
+
+message TranListReply {
+	repeated List tran = 1;
+	message List {
+		string created_at = 1;
+		string amount = 2;;
+	}
+}
+
+message RecommendListRequest {
+	string address = 1;
+}
+
+message RecommendListReply {
+	string status = 6;
+
+	repeated List recommends = 1;
+	message List {
+		string address = 1; // 地址
+		string amount = 2; // 团队累计
+		string myAmount = 3; // 个人累计
+	}
+}
+
+message ExchangeRequest {
+	message SendBody{
+		string sign = 2;
+		uint64 amount = 1;
+		string publicKey = 5;
+		string type = 3;
+	}
+
+	SendBody send_body = 1;
+}
+
+message ExchangeReply {
+	string status = 1;
+}
+
+message WithdrawRequest {
+	message SendBody{
+		double amount = 1;
+		string sign = 4;
+		uint64 coinType = 2;
+	}
+
+	SendBody send_body = 1;
+}
+
+message WithdrawReply {
+	string status = 1;
+}
+
+message SetInfoRequest {
+	message SendBody{
+		string sign = 4;
+		string one = 40; // 国家
+		string two = 41; // 省份
+		string three = 42; // 城市
+		string four = 43; // 区域
+		string five = 44; // 详情
+		string six = 45; // 收件人手机
+		string seven = 46; // 收件人
+	}
+
+	SendBody send_body = 1;
+}
+
+message SetInfoReply {
+	string status = 1;
+}
+
+message PasswordChangeRequest {
+	message SendBody{
+		string password = 2;
+	}
+
+	SendBody send_body = 1;
+}
+
+message PasswordChangeReply {
+	string password = 1;
+}
+
+message TranRequest {
+	message SendBody{
+		string type = 2;
+		string amount = 1;
+		string address = 3;
+		string password = 4;
+	}
+
+	SendBody send_body = 1;
+}
+
+message TranReply {
+	string status = 1;
+}
+
+message SetBalanceRewardRequest {
+	message SendBody{
+		string amount = 1;
+	}
+
+	SendBody send_body = 1;
+}
+
+message SetBalanceRewardReply {
+	string status = 1;
+}
+
+message DeleteBalanceRewardRequest {
+	message SendBody{
+		string amount = 1;
+	}
+
+	SendBody send_body = 1;
+}
+
+message DeleteBalanceRewardReply {
+	string status = 1;
+}
+
+message AdminRewardListRequest {
+	int64 page = 1;
+	string address = 2;
+}
+
+message AdminRewardListReply {
+	repeated List rewards = 1;
+	message List {
+		string created_at = 1;
+		string amount = 2;
+		string type = 4;
+		string address = 5;
+		string reason = 6;
+	}
+	 int64 count = 2;
+}
+
+message AdminUserListRequest {
+	int64 page = 1;
+	string address = 2;
+}
+
+message AdminUserListReply {
+	repeated UserList users = 1;
+	message UserList {
+		int64 user_id = 8;
+		string created_at = 1;
+		string address = 2;
+		string balanceUsdt = 3;
+		string balanceDhb = 4;
+		int64 vip = 5;
+		int64 monthRecommend = 7;
+		int64 historyRecommend = 6;
+	}
+	int64 count = 2;
+}
+
+message AdminLocationListRequest {
+	int64 page = 1;
+	string address = 2;
+}
+
+message AdminLocationListReply {
+	repeated LocationList locations = 1;
+	message  LocationList {
+		string created_at = 1;
+		string address = 2;
+		int64 row = 3;
+		int64 col = 4;
+		string status = 5;
+		int64 currentLevel = 6;
+		string current = 7;
+		string currentMax = 8;
+	}
+	int64 count = 2;
+}
+
+message AdminWithdrawListRequest {
+	int64 page = 1;
+	string address = 2;
+}
+
+message AdminWithdrawListReply {
+	repeated List withdraw = 1;
+	message List {
+		string address = 5;
+		int64  id = 7;
+		string created_at = 1;
+		string amount = 2;
+		string relAmount = 6;
+		string type = 3;
+		string status=4;
+	}
+	int64 count = 2;
+}
+
+message AdminWithdrawRequest {
+}
+
+message AdminWithdrawReply {
+}
+
+message AdminWithdrawEthRequest {
+}
+
+message AdminWithdrawEthReply {
+}
+
+message AdminFeeRequest {
+}
+
+message AdminFeeReply {
+}
+
+message TokenWithdrawRequest {
+}
+
+message TokenWithdrawReply {
+}
+
+
+message AdminAllRequest {
+}
+
+message AdminAllReply {
+	int64 todayTotalUser = 1;
+	int64 totalUser = 2;
+	string allBalance = 3;
+	string todayLocation = 4;
+	string allLocation = 5;
+	string todayWithdraw = 6;
+	string allWithdraw = 7;
+	string allReward = 8;
+	string allSystemRewardAndFee = 9;
+}
+
+message AdminUserRecommendRequest {
+	int64 user_id = 1;
+}
+
+message AdminUserRecommendReply {
+	repeated List users = 1;
+	message List {
+		int64 user_id = 4;
+		string address = 3;
+		int64  id = 2;
+		string created_at = 1;
+	}
+}
+
+message AdminMonthRecommendRequest {
+	string address = 1;
+	int64 page = 2;
+}
+
+message AdminMonthRecommendReply {
+	repeated List users = 1;
+	message List {
+		string address = 3;
+		string recommendAddress = 4;
+		int64  id = 2;
+		string created_at = 1;
+	}
+	int64 count = 2;
+}
+
+message AdminConfigRequest {
+	int64 userId = 1;
+	int64 page = 2;
+}
+
+message AdminConfigReply {
+	repeated List config = 1;
+	message List {
+		int64 id = 1;
+		string name = 3;
+		string value = 2;
+	}
+	int64 count = 2;
+}
+
+message AdminConfigUpdateRequest {
+	message SendBody{
+		int64 id = 1;
+		string value = 2;
+	}
+
+	SendBody send_body = 1;
+}
+
+message AdminConfigUpdateReply {
+
+}

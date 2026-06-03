@@ -1,0 +1,1690 @@
+# Generated with protoc-gen-openapi
+# https://github.com/google/gnostic/tree/master/cmd/protoc-gen-openapi
+
+openapi: 3.0.3
+info:
+    title: App API
+    version: 0.0.1
+paths:
+    /api/admin_dhb/deposit:
+        get:
+            tags:
+                - App
+            operationId: App_Deposit
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/DepositReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/admin_dhb/fee:
+        get:
+            tags:
+                - App
+            operationId: App_AdminFee
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/AdminFeeReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/admin_dhb/withdraw:
+        get:
+            tags:
+                - App
+            description: |-
+                rpc AdminRewardList (AdminRewardListRequest) returns (AdminRewardListReply) {
+                		option (google.api.http) = {
+                			get: "/api/admin_dhb/reward_list"
+                		};
+                	};
+
+                	rpc AdminUserList (AdminUserListRequest) returns (AdminUserListReply) {
+                		option (google.api.http) = {
+                			get: "/api/admin_dhb/user_list"
+                		};
+                	};
+
+                	rpc AdminLocationList (AdminLocationListRequest) returns (AdminLocationListReply) {
+                		option (google.api.http) = {
+                			get: "/api/admin_dhb/location_list"
+                		};
+                	};
+
+                	rpc AdminWithdrawList (AdminWithdrawListRequest) returns (AdminWithdrawListReply) {
+                		option (google.api.http) = {
+                			get: "/api/admin_dhb/withdraw_list"
+                		};
+                	};
+            operationId: App_AdminWithdraw
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/AdminWithdrawReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/admin_dhb/withdraw_eth:
+        get:
+            tags:
+                - App
+            operationId: App_AdminWithdrawEth
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/AdminWithdrawEthReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/amount_to:
+        post:
+            tags:
+                - App
+            operationId: App_AmountTo
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/AmountToRequest_SendBody'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/AmountToReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/buy:
+        post:
+            tags:
+                - App
+            operationId: App_Buy
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/BuyRequest_SendBody'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/BuyReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/buy_four:
+        post:
+            tags:
+                - App
+            operationId: App_BuyFour
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/BuyRequest_SendBody'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/BuyReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/buy_three:
+        post:
+            tags:
+                - App
+            operationId: App_BuyThree
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/BuyRequest_SendBody'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/BuyReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/buy_two:
+        post:
+            tags:
+                - App
+            operationId: App_BuyTwo
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/BuyRequest_SendBody'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/BuyReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/delete_address:
+        post:
+            tags:
+                - App
+            operationId: App_DeleteAddress
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/DeleteAddressRequest_SendBody'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/DeleteAddressReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/delete_balance_reward:
+        post:
+            tags:
+                - App
+            operationId: App_DeleteBalanceReward
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/DeleteBalanceRewardRequest_SendBody'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/DeleteBalanceRewardReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/deposit_list:
+        get:
+            tags:
+                - App
+            description: 交易明细
+            operationId: App_DepositList
+            parameters:
+                - name: page
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/DepositListReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/eth_authorize:
+        post:
+            tags:
+                - App
+            operationId: App_EthAuthorize
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/EthAuthorizeRequest_SendBody'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/EthAuthorizeReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/exchange:
+        post:
+            tags:
+                - App
+            operationId: App_Exchange
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/ExchangeRequest_SendBody'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ExchangeReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/fee_reward_list:
+        get:
+            tags:
+                - App
+            operationId: App_FeeRewardList
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/FeeRewardListReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/get_trade:
+        post:
+            tags:
+                - App
+            operationId: App_GetTrade
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/GetTradeRequest_SendBody'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/GetTradeReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/order_four_list:
+        get:
+            tags:
+                - App
+            description: 订单
+            operationId: App_OrderFourList
+            parameters:
+                - name: page
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/OrderFourListReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/order_list:
+        get:
+            tags:
+                - App
+            description: 订单
+            operationId: App_OrderList
+            parameters:
+                - name: page
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/OrderListReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/order_three_list:
+        get:
+            tags:
+                - App
+            operationId: App_OrderThreeList
+            parameters:
+                - name: page
+                  in: query
+                  schema:
+                    type: string
+                - name: orderType
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/OrderTwoListReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/order_two_list:
+        get:
+            tags:
+                - App
+            operationId: App_OrderTwoList
+            parameters:
+                - name: page
+                  in: query
+                  schema:
+                    type: string
+                - name: orderType
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/OrderTwoListReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/password_change:
+        post:
+            tags:
+                - App
+            operationId: App_PasswordChange
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/PasswordChangeRequest_SendBody'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/PasswordChangeReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/recommend_list:
+        get:
+            tags:
+                - App
+            operationId: App_UserRecommend
+            parameters:
+                - name: address
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/RecommendListReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/recommend_reward_list:
+        get:
+            tags:
+                - App
+            operationId: App_RecommendRewardList
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/RecommendRewardListReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/recommend_update:
+        post:
+            tags:
+                - App
+            operationId: App_RecommendUpdate
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/RecommendUpdateRequest_SendBody'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/RecommendUpdateReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/reward_list:
+        get:
+            tags:
+                - App
+            description: 交易明细
+            operationId: App_RewardList
+            parameters:
+                - name: page
+                  in: query
+                  schema:
+                    type: string
+                - name: reqType
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/RewardListReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/set_address:
+        post:
+            tags:
+                - App
+            operationId: App_SetAddress
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/SetAddressRequest_SendBody'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/SetAddressReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/set_balance_reward:
+        post:
+            tags:
+                - App
+            operationId: App_SetBalanceReward
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/SetBalanceRewardRequest_SendBody'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/SetBalanceRewardReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/set_info:
+        post:
+            tags:
+                - App
+            operationId: App_SetInfo
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/SetInfoRequest_SendBody'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/SetInfoReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/set_today:
+        post:
+            tags:
+                - App
+            operationId: App_SetToday
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/SetTodayRequest_SendBody'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/SetTodayReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/set_today_list:
+        get:
+            tags:
+                - App
+            operationId: App_SetTodayList
+            parameters:
+                - name: page
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/SetTodayListReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/stake:
+        post:
+            tags:
+                - App
+            operationId: App_Stake
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/StakeRequest_SendBody'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/StakeReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/token_withdraw:
+        get:
+            tags:
+                - App
+            operationId: App_TokenWithdraw
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/TokenWithdrawReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/trade:
+        post:
+            tags:
+                - App
+            operationId: App_Trade
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/WithdrawRequest_SendBody'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/WithdrawReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/trade_list:
+        get:
+            tags:
+                - App
+            operationId: App_TradeList
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/TradeListReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/tran:
+        post:
+            tags:
+                - App
+            operationId: App_Tran
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/TranRequest_SendBody'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/TranReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/tran_list:
+        get:
+            tags:
+                - App
+            operationId: App_TranList
+            parameters:
+                - name: type
+                  in: query
+                  schema:
+                    type: string
+                - name: tran
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/TranListReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/un_stake:
+        post:
+            tags:
+                - App
+            operationId: App_UnStake
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/UnStakeRequest_SendBody'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/UnStakeReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/user_area:
+        get:
+            tags:
+                - App
+            operationId: App_UserArea
+            parameters:
+                - name: locationId
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/UserAreaReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/user_info:
+        get:
+            tags:
+                - App
+            operationId: App_UserInfo
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/UserInfoReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/withdraw:
+        post:
+            tags:
+                - App
+            operationId: App_Withdraw
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/WithdrawRequest_SendBody'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/WithdrawReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /api/app_server/withdraw_list:
+        get:
+            tags:
+                - App
+            operationId: App_WithdrawList
+            parameters:
+                - name: page
+                  in: query
+                  schema:
+                    type: string
+                - name: coinType
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/WithdrawListReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+components:
+    schemas:
+        AdminFeeReply:
+            type: object
+            properties: {}
+        AdminWithdrawEthReply:
+            type: object
+            properties: {}
+        AdminWithdrawReply:
+            type: object
+            properties: {}
+        AmountToReply:
+            type: object
+            properties:
+                status:
+                    type: string
+        AmountToRequest_SendBody:
+            type: object
+            properties:
+                amount:
+                    type: string
+                address:
+                    type: string
+                sign:
+                    type: string
+        BuyReply:
+            type: object
+            properties:
+                status:
+                    type: string
+        BuyRequest_SendBody:
+            type: object
+            properties:
+                sign:
+                    type: string
+                id:
+                    type: string
+                full:
+                    type: string
+                addressId:
+                    type: string
+                amount:
+                    type: string
+        DeleteAddressReply:
+            type: object
+            properties:
+                status:
+                    type: string
+        DeleteAddressRequest_SendBody:
+            type: object
+            properties:
+                id:
+                    type: string
+                sign:
+                    type: string
+        DeleteBalanceRewardReply:
+            type: object
+            properties:
+                status:
+                    type: string
+        DeleteBalanceRewardRequest_SendBody:
+            type: object
+            properties:
+                amount:
+                    type: string
+        DepositListReply:
+            type: object
+            properties:
+                status:
+                    type: string
+                count:
+                    type: string
+                list:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/DepositListReply_List'
+        DepositListReply_List:
+            type: object
+            properties:
+                createdAt:
+                    type: string
+                amount:
+                    type: string
+        DepositReply:
+            type: object
+            properties: {}
+        EthAuthorizeReply:
+            type: object
+            properties:
+                token:
+                    type: string
+                status:
+                    type: string
+        EthAuthorizeRequest_SendBody:
+            type: object
+            properties:
+                address:
+                    type: string
+                code:
+                    type: string
+                password:
+                    type: string
+                sign:
+                    type: string
+                publicKey:
+                    type: string
+        ExchangeReply:
+            type: object
+            properties:
+                status:
+                    type: string
+        ExchangeRequest_SendBody:
+            type: object
+            properties:
+                sign:
+                    type: string
+                amount:
+                    type: string
+                publicKey:
+                    type: string
+                type:
+                    type: string
+        FeeRewardListReply:
+            type: object
+            properties:
+                rewards:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/FeeRewardListReply_List'
+        FeeRewardListReply_List:
+            type: object
+            properties:
+                createdAt:
+                    type: string
+                amount:
+                    type: string
+        GetTradeReply:
+            type: object
+            properties:
+                amountCsd:
+                    type: string
+                amountHbs:
+                    type: string
+        GetTradeRequest_SendBody:
+            type: object
+            properties:
+                amount:
+                    type: string
+        GoogleProtobufAny:
+            type: object
+            properties:
+                '@type':
+                    type: string
+                    description: The type of the serialized message.
+            additionalProperties: true
+            description: Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
+        OrderFourListReply:
+            type: object
+            properties:
+                count:
+                    type: string
+                status:
+                    type: string
+                list:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/OrderFourListReply_List'
+        OrderFourListReply_List:
+            type: object
+            properties:
+                createdAt:
+                    type: string
+                amount:
+                    type: string
+                amountGet:
+                    type: string
+                amountLast:
+                    type: string
+        OrderListReply:
+            type: object
+            properties:
+                count:
+                    type: string
+                status:
+                    type: string
+                list:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/OrderListReply_List'
+        OrderListReply_List:
+            type: object
+            properties:
+                createdAt:
+                    type: string
+                amount:
+                    type: string
+                amountGet:
+                    type: string
+                amountLast:
+                    type: string
+                num:
+                    type: string
+                status:
+                    type: string
+                one:
+                    type: string
+                two:
+                    type: string
+                three:
+                    type: string
+                four:
+                    type: string
+                five:
+                    type: string
+                six:
+                    type: string
+        OrderTwoListReply:
+            type: object
+            properties:
+                count:
+                    type: string
+                status:
+                    type: string
+                list:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/OrderTwoListReply_List'
+        OrderTwoListReply_List:
+            type: object
+            properties:
+                createdAt:
+                    type: string
+                amount:
+                    type: string
+                country:
+                    type: string
+                province:
+                    type: string
+                city:
+                    type: string
+                area:
+                    type: string
+                detail:
+                    type: string
+                name:
+                    type: string
+                phone:
+                    type: string
+                four:
+                    type: string
+                five:
+                    type: string
+                six:
+                    type: string
+                orderType:
+                    type: string
+        PasswordChangeReply:
+            type: object
+            properties:
+                password:
+                    type: string
+        PasswordChangeRequest_SendBody:
+            type: object
+            properties:
+                password:
+                    type: string
+        RecommendListReply:
+            type: object
+            properties:
+                status:
+                    type: string
+                recommends:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/RecommendListReply_List'
+        RecommendListReply_List:
+            type: object
+            properties:
+                address:
+                    type: string
+                amount:
+                    type: string
+                myAmount:
+                    type: string
+        RecommendRewardListReply:
+            type: object
+            properties:
+                rewards:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/RecommendRewardListReply_List'
+        RecommendRewardListReply_List:
+            type: object
+            properties:
+                createdAt:
+                    type: string
+                amount:
+                    type: string
+                type:
+                    type: string
+                reason:
+                    type: string
+        RecommendUpdateReply:
+            type: object
+            properties:
+                inviteUserAddress:
+                    type: string
+        RecommendUpdateRequest_SendBody:
+            type: object
+            properties:
+                code:
+                    type: string
+                sign:
+                    type: string
+                publicKey:
+                    type: string
+        RewardListReply:
+            type: object
+            properties:
+                status:
+                    type: string
+                count:
+                    type: string
+                list:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/RewardListReply_List'
+        RewardListReply_List:
+            type: object
+            properties:
+                createdAt:
+                    type: string
+                name:
+                    type: string
+                amount:
+                    type: string
+                amountTwo:
+                    type: string
+                address:
+                    type: string
+                num:
+                    type: string
+        SetAddressReply:
+            type: object
+            properties:
+                status:
+                    type: string
+        SetAddressRequest_SendBody:
+            type: object
+            properties:
+                sign:
+                    type: string
+                country:
+                    type: string
+                province:
+                    type: string
+                city:
+                    type: string
+                area:
+                    type: string
+                detail:
+                    type: string
+                name:
+                    type: string
+                phone:
+                    type: string
+        SetBalanceRewardReply:
+            type: object
+            properties:
+                status:
+                    type: string
+        SetBalanceRewardRequest_SendBody:
+            type: object
+            properties:
+                amount:
+                    type: string
+        SetInfoReply:
+            type: object
+            properties:
+                status:
+                    type: string
+        SetInfoRequest_SendBody:
+            type: object
+            properties:
+                sign:
+                    type: string
+                one:
+                    type: string
+                two:
+                    type: string
+                three:
+                    type: string
+                four:
+                    type: string
+                five:
+                    type: string
+                six:
+                    type: string
+                seven:
+                    type: string
+        SetTodayListReply:
+            type: object
+            properties:
+                status:
+                    type: string
+                count:
+                    type: string
+                list:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/SetTodayListReply_List'
+        SetTodayListReply_List:
+            type: object
+            properties:
+                createdAt:
+                    type: string
+                amount:
+                    type: string
+        SetTodayReply:
+            type: object
+            properties:
+                status:
+                    type: string
+        SetTodayRequest_SendBody:
+            type: object
+            properties:
+                sign:
+                    type: string
+        StakeReply:
+            type: object
+            properties:
+                status:
+                    type: string
+        StakeRequest_SendBody:
+            type: object
+            properties:
+                day:
+                    type: string
+                amount:
+                    type: string
+                sign:
+                    type: string
+                publicKey:
+                    type: string
+        Status:
+            type: object
+            properties:
+                code:
+                    type: integer
+                    description: The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code].
+                    format: int32
+                message:
+                    type: string
+                    description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the [google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client.
+                details:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/GoogleProtobufAny'
+                    description: A list of messages that carry the error details.  There is a common set of message types for APIs to use.
+            description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+        TokenWithdrawReply:
+            type: object
+            properties: {}
+        TradeListReply:
+            type: object
+            properties:
+                trade:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/TradeListReply_List'
+        TradeListReply_List:
+            type: object
+            properties:
+                createdAt:
+                    type: string
+                amountCsd:
+                    type: string
+                amountHbs:
+                    type: string
+                status:
+                    type: string
+        TranListReply:
+            type: object
+            properties:
+                tran:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/TranListReply_List'
+        TranListReply_List:
+            type: object
+            properties:
+                createdAt:
+                    type: string
+                amount:
+                    type: string
+        TranReply:
+            type: object
+            properties:
+                status:
+                    type: string
+        TranRequest_SendBody:
+            type: object
+            properties:
+                type:
+                    type: string
+                amount:
+                    type: string
+                address:
+                    type: string
+                password:
+                    type: string
+        UnStakeReply:
+            type: object
+            properties:
+                status:
+                    type: string
+        UnStakeRequest_SendBody:
+            type: object
+            properties:
+                id:
+                    type: string
+                sign:
+                    type: string
+                publicKey:
+                    type: string
+        UserAreaReply:
+            type: object
+            properties:
+                area:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/UserAreaReply_List'
+        UserAreaReply_List:
+            type: object
+            properties:
+                address:
+                    type: string
+                locationId:
+                    type: string
+                countLow:
+                    type: string
+        UserInfoReply:
+            type: object
+            properties:
+                status:
+                    type: string
+                level:
+                    type: string
+                    description: 我的节点
+                locationNum:
+                    type: string
+                total:
+                    type: string
+                max:
+                    type: string
+                min:
+                    type: string
+                inviteUserAddress:
+                    type: string
+                buy:
+                    type: string
+                    description: 我的收益
+                amountGetSub:
+                    type: string
+                amountGet:
+                    type: string
+                outNum:
+                    type: string
+                location:
+                    type: string
+                recommend:
+                    type: string
+                recommendTwo:
+                    type: string
+                team:
+                    type: string
+                teamTwo:
+                    type: string
+                all:
+                    type: string
+                amountUsdt:
+                    type: string
+                usdt:
+                    type: string
+                withdrawRate:
+                    type: number
+                    format: double
+                withdrawMin:
+                    type: number
+                    format: double
+                raw:
+                    type: string
+                withdrawRateTwo:
+                    type: number
+                    format: double
+                withdrawMinTwo:
+                    type: number
+                    format: double
+                rawNew:
+                    type: string
+                one:
+                    type: string
+                two:
+                    type: string
+                three:
+                    type: string
+                four:
+                    type: string
+                five:
+                    type: string
+                six:
+                    type: string
+                seven:
+                    type: string
+                notice:
+                    type: string
+                goods:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/UserInfoReply_List'
+                goodsTwo:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/UserInfoReply_List'
+                goodsThree:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/UserInfoReply_List'
+                userAddress:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/UserInfoReply_ListAddress'
+                priceOne:
+                    type: string
+                priceTwo:
+                    type: string
+                priceThree:
+                    type: string
+                priceFour:
+                    type: string
+                priceFive:
+                    type: string
+                priceSix:
+                    type: string
+                ispayAmount:
+                    type: string
+        UserInfoReply_List:
+            type: object
+            properties:
+                id:
+                    type: string
+                one:
+                    type: string
+                two:
+                    type: string
+                three:
+                    type: string
+                four:
+                    type: string
+                five:
+                    type: string
+        UserInfoReply_ListAddress:
+            type: object
+            properties:
+                id:
+                    type: string
+                city:
+                    type: string
+                country:
+                    type: string
+                province:
+                    type: string
+                area:
+                    type: string
+                detail:
+                    type: string
+                name:
+                    type: string
+                phone:
+                    type: string
+        WithdrawListReply:
+            type: object
+            properties:
+                count:
+                    type: string
+                status:
+                    type: string
+                list:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/WithdrawListReply_List'
+        WithdrawListReply_List:
+            type: object
+            properties:
+                createdAt:
+                    type: string
+                amount:
+                    type: string
+        WithdrawReply:
+            type: object
+            properties:
+                status:
+                    type: string
+        WithdrawRequest_SendBody:
+            type: object
+            properties:
+                amount:
+                    type: number
+                    format: double
+                sign:
+                    type: string
+                coinType:
+                    type: string
+tags:
+    - name: App
