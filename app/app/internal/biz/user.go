@@ -443,7 +443,7 @@ type UserInfoRepo interface {
 	GetBuyRecord(ctx context.Context, day int) ([]*BuyRecord, error)
 	UpdateUserMyTotalAmountAdd(ctx context.Context, userId int64, amountUsdt, myTotal float64) error
 	UpdateUserRewardRecommend2(ctx context.Context, id, userId int64, usdt, raw, usdtOrigin float64, amountOrigin float64, stop bool, address string) error
-	UpdateUserRewardRecommend2New(ctx context.Context, userId int64, usdt float64, address string) error
+	UpdateUserRewardRecommend2New(ctx context.Context, userId, i int64, usdt float64, address string) error
 	UpdateUserRewardRecommendFourNew(ctx context.Context, userId, num int64, usdt float64, address string) error
 	UpdateUserRewardRecommendBrc(ctx context.Context, userId int64, raw float64, address string) error
 	CreateEthUserRecordListByHash(ctx context.Context, r *EthUserRecord) (*EthUserRecord, error)
@@ -1656,34 +1656,46 @@ func (uuc *UserUseCase) RewardList(ctx context.Context, req *v1.RewardListReques
 		err         error
 	)
 
+	//if 1 == req.ReqType {
+	//	reason = "buy"
+	//} else if 2 == req.ReqType {
+	//	reason = "location"
+	//} else if 3 == req.ReqType {
+	//	reason = "recommend"
+	//} else if 4 == req.ReqType {
+	//	reason = "recommend_two"
+	//} else if 5 == req.ReqType {
+	//	reason = "area"
+	//} else if 6 == req.ReqType {
+	//	reason = "area_two"
+	//} else if 7 == req.ReqType {
+	//	reason = "all"
+	//} else if 8 == req.ReqType {
+	//	reason = "send"
+	//} else if 9 == req.ReqType {
+	//	reason = "buy_two"
+	//} else if 10 == req.ReqType {
+	//	reason = "buy_three"
+	//} else if 11 == req.ReqType {
+	//	reason = "to_amount"
+	//} else if 12 == req.ReqType {
+	//	reason = "buy_four"
+	//} else if 13 == req.ReqType {
+	//	reason = "recommend_four_new"
+	//} else if 14 == req.ReqType {
+	//	reason = "ispay_reward"
+	//}
+
 	if 1 == req.ReqType {
 		reason = "buy"
-	} else if 2 == req.ReqType {
-		reason = "location"
 	} else if 3 == req.ReqType {
 		reason = "recommend"
-	} else if 4 == req.ReqType {
-		reason = "recommend_two"
-	} else if 5 == req.ReqType {
-		reason = "area"
-	} else if 6 == req.ReqType {
-		reason = "area_two"
-	} else if 7 == req.ReqType {
-		reason = "all"
-	} else if 8 == req.ReqType {
-		reason = "send"
-	} else if 9 == req.ReqType {
-		reason = "buy_two"
-	} else if 10 == req.ReqType {
-		reason = "buy_three"
-	} else if 11 == req.ReqType {
-		reason = "to_amount"
-	} else if 12 == req.ReqType {
-		reason = "buy_four"
-	} else if 13 == req.ReqType {
-		reason = "recommend_four_new"
-	} else if 14 == req.ReqType {
-		reason = "ispay_reward"
+	} else {
+		return &v1.RewardListReply{
+			Status: "ok",
+			Count:  uint64(count),
+			List:   res,
+		}, err
 	}
 
 	userRewards, err, count = uuc.ubRepo.GetUserRewardByUserIdPage(ctx, &Pagination{
@@ -1965,8 +1977,6 @@ func (uuc *UserUseCase) OrderList(ctx context.Context, req *v1.OrderListRequest,
 	var (
 		myUser    *User
 		buyRecord []*BuyRecord
-		goods     []*Good
-		goodsMap  map[int64]*Good
 		count     int64
 		err       error
 	)
@@ -1984,79 +1994,11 @@ func (uuc *UserUseCase) OrderList(ctx context.Context, req *v1.OrderListRequest,
 		}, nil
 	}
 
-	goods, err = uuc.ubRepo.GetGoodsAll(ctx)
-	if nil != err {
-		return nil, err
-	}
-	goodsMap = make(map[int64]*Good, 0)
-	for _, v := range goods {
-		goodsMap[v.ID] = v
-	}
-
-	num := 2.5
-	numStr := "2.5"
-	t := time.Date(2026, 2, 18, 14, 0, 0, 0, time.UTC)
 	for _, vBuyRecord := range buyRecord {
-		tmpAmountGet := vBuyRecord.AmountGet
-		tmpAmountLast := float64(0)
-
-		if vBuyRecord.CreatedAt.After(t) {
-			amount := uint64(vBuyRecord.Amount)
-			if 4999 <= amount && 15001 > amount {
-				num = 3
-				numStr = "3"
-			} else if 29999 <= amount && 50001 > amount {
-				num = 3.5
-				numStr = "3.5"
-			} else if 99999 <= amount && 150001 > amount {
-				num = 4
-				numStr = "4"
-			}
-		}
-
-		if vBuyRecord.AmountGet >= vBuyRecord.Amount*num {
-			tmpAmountGet = vBuyRecord.Amount * num
-		} else {
-			tmpAmountLast = vBuyRecord.Amount*num - vBuyRecord.AmountGet
-		}
-
-		oneTmp := ""
-		if "1" != vBuyRecord.One {
-			oneTmp = vBuyRecord.One
-		}
-		twoTmp := ""
-		if "1" != vBuyRecord.One {
-			twoTmp = vBuyRecord.Two
-		}
-		threeTmp := ""
-		if "1" != vBuyRecord.One {
-			threeTmp = vBuyRecord.Three
-		}
-
-		fourTmp := ""
-		fiveTmp := ""
-		sixTmp := ""
-		if 0 != vBuyRecord.Four {
-			if _, ok := goodsMap[vBuyRecord.Four]; ok {
-				fourTmp = goodsMap[vBuyRecord.Four].Name
-				fiveTmp = goodsMap[vBuyRecord.Four].One
-				sixTmp = goodsMap[vBuyRecord.Four].Two
-			}
-		}
-
 		res = append(res, &v1.OrderListReply_List{
-			CreatedAt:  vBuyRecord.CreatedAt.Add(8 * time.Hour).Format("2006-01-02 15:04:05"),
-			Amount:     fmt.Sprintf("%.2f", vBuyRecord.Amount),
-			Status:     uint64(vBuyRecord.Status),
-			AmountGet:  fmt.Sprintf("%.2f", tmpAmountGet),
-			AmountLast: fmt.Sprintf("%.2f", tmpAmountLast),
-			Num:        numStr,
-			One:        oneTmp,
-			Two:        twoTmp,
-			Three:      threeTmp,
-			Four:       fourTmp,
-			Five:       fiveTmp,
-			Six:        sixTmp,
+			CreatedAt: vBuyRecord.CreatedAt.Add(8 * time.Hour).Format("2006-01-02 15:04:05"),
+			Amount:    fmt.Sprintf("%.2f", vBuyRecord.Amount),
+			Status:    uint64(vBuyRecord.Status),
 		})
 	}
 
@@ -2447,24 +2389,23 @@ func (uuc *UserUseCase) Buy(ctx context.Context, req *v1.BuyRequest, user *User)
 		err     error
 		configs []*Config
 		//priceOne      float64
-		priceTwo      float64
-		priceThree    float64
-		priceFour     float64
-		priceFive     float64
-		priceSix      float64
-		recommendRate float64
-		price         float64
+		//priceTwo      float64
+		//priceThree    float64
+		//priceFour     float64
+		//priceFive     float64
+		//priceSix      float64
+		//recommendRate float64
+		rr1 float64
+		rr2 float64
+		rr3 float64
+		//price         float64
 	)
 
 	// 配置
 	configs, err = uuc.configRepo.GetConfigByKeys(ctx,
-		"price_one",
-		"price_two",
-		"price_three",
-		"price_four",
-		"price_five",
-		"price_six",
-		"buy_recommend_rate_tw",
+		"rr1",
+		"rr2",
+		"rr3",
 	)
 	if nil != err || nil == configs {
 		return &v1.BuyReply{
@@ -2473,57 +2414,21 @@ func (uuc *UserUseCase) Buy(ctx context.Context, req *v1.BuyRequest, user *User)
 	}
 
 	for _, vConfig := range configs {
-		//if "price_one" == vConfig.KeyName {
-		//	priceOne, _ = strconv.ParseFloat(vConfig.Value, 10)
-		//}
-		if "price_two" == vConfig.KeyName {
-			priceTwo, _ = strconv.ParseFloat(vConfig.Value, 10)
+		if "rr1" == vConfig.KeyName {
+			rr1, _ = strconv.ParseFloat(vConfig.Value, 10)
 		}
-		if "price_three" == vConfig.KeyName {
-			priceThree, _ = strconv.ParseFloat(vConfig.Value, 10)
+		if "rr2" == vConfig.KeyName {
+			rr1, _ = strconv.ParseFloat(vConfig.Value, 10)
 		}
-		if "price_four" == vConfig.KeyName {
-			priceFour, _ = strconv.ParseFloat(vConfig.Value, 10)
-		}
-		if "price_five" == vConfig.KeyName {
-			priceFive, _ = strconv.ParseFloat(vConfig.Value, 10)
-		}
-		if "price_six" == vConfig.KeyName {
-			priceSix, _ = strconv.ParseFloat(vConfig.Value, 10)
-		}
-		if "buy_recommend_rate_tw" == vConfig.KeyName {
-			recommendRate, _ = strconv.ParseFloat(vConfig.Value, 10)
+		if "rr3" == vConfig.KeyName {
+			rr1, _ = strconv.ParseFloat(vConfig.Value, 10)
 		}
 	}
 	amount := req.SendBody.Amount
-	//if 50 <= amount && 3000 >= amount {
-	//	price = priceOne
-	//} else if 5000 <= amount && 25000 >= amount {
-	//	price = priceTwo
-	//} else if 30000 <= amount && 50000 >= amount {
-	//	price = priceThree
-	//} else if 75000 <= amount && 200000 >= amount {
-	//	price = priceFour
-	//} else if 300000 <= amount && 500000 >= amount {
-	//	price = priceFive
-	//} else if 700000 <= amount && 1000000 >= amount {
-	//	price = priceSix
-	//} else {
-	//	return &v1.BuyReply{
-	//		Status: "参数错误 |err amount",
-	//	}, nil
-	//}
 
-	if 50 <= amount && 25000 >= amount {
-		price = priceTwo
-	} else if 30000 <= amount && 50000 >= amount {
-		price = priceThree
-	} else if 75000 <= amount && 200000 >= amount {
-		price = priceFour
-	} else if 300000 <= amount && 500000 >= amount {
-		price = priceFive
-	} else if 700000 <= amount && 1000000 >= amount {
-		price = priceSix
+	if 500 == amount {
+	} else if 1000 == amount {
+	} else if 3000 == amount {
 	} else {
 		return &v1.BuyReply{
 			Status: "参数错误 |err amount",
@@ -2572,16 +2477,10 @@ func (uuc *UserUseCase) Buy(ctx context.Context, req *v1.BuyRequest, user *User)
 		}, nil
 	}
 
-	if 0.0000000001 >= price {
-		return &v1.BuyReply{
-			Status: "价格太低|price error",
-		}, nil
-	}
-
 	four := int64(0)
 	// 入金
 	if err = uuc.tx.ExecTx(ctx, func(ctx context.Context) error { // 事务
-		err = uuc.uiRepo.UpdateUserNewNewNew(ctx, user.ID, amount, amountRel, amountRel/price, "", "", "", four)
+		err = uuc.uiRepo.UpdateUserNewNewNew(ctx, user.ID, amount, amountRel, 0, "", "", "", four)
 		if nil != err {
 			return err
 		}
@@ -2610,7 +2509,9 @@ func (uuc *UserUseCase) Buy(ctx context.Context, req *v1.BuyRequest, user *User)
 	}
 
 	totalTmp := len(tmpRecommendUserIds) - 1
+	tmpNum := int64(0)
 	for i := totalTmp; i >= 0; i-- {
+		tmpNum++
 		tmpUserId, _ := strconv.ParseInt(tmpRecommendUserIds[i], 10, 64) // 最后一位是直推人
 		if 0 >= tmpUserId {
 			continue
@@ -2644,19 +2545,32 @@ func (uuc *UserUseCase) Buy(ctx context.Context, req *v1.BuyRequest, user *User)
 
 		// 直推
 		tmpRecommendUser := usersMap[tmpUserId]
-		if i == totalTmp {
-			// 入金
-			if err = uuc.tx.ExecTx(ctx, func(ctx context.Context) error { // 事务
-				err = uuc.uiRepo.UpdateUserRewardRecommend2New(ctx, tmpUserId, amountRel*recommendRate, user.Address)
-				if err != nil {
-					fmt.Println("错误分红直推：", err)
-					return err
-				}
+		recommendRate := float64(0)
+		if 1 == tmpNum {
+			recommendRate = rr1
+		} else if 2 == tmpNum {
+			recommendRate = rr2
+		} else if 3 == tmpNum {
+			recommendRate = rr3
+		} else {
+			break
+		}
 
-				return nil
-			}); nil != err {
-				fmt.Println("err reward recommend", err, amount, user, tmpRecommendUser)
+		if 0.000000001 > recommendRate {
+			continue
+		}
+
+		// 入金
+		if err = uuc.tx.ExecTx(ctx, func(ctx context.Context) error { // 事务
+			err = uuc.uiRepo.UpdateUserRewardRecommend2New(ctx, tmpUserId, tmpNum, amountRel*recommendRate, user.Address)
+			if err != nil {
+				fmt.Println("错误分红直推：", err)
+				return err
 			}
+
+			return nil
+		}); nil != err {
+			fmt.Println("err reward recommend", err, amount, user, tmpRecommendUser)
 		}
 	}
 

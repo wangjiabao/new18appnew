@@ -4169,17 +4169,16 @@ func (ui *UserInfoRepo) UpdateUserNewNewNew(ctx context.Context, userId int64, a
 		Where("user_id=?", userId).Where("balance_usdt_float>=?", amountRel).
 		Updates(map[string]interface{}{
 			"balance_usdt_float": gorm.Expr("balance_usdt_float - ?", amountRel),
-			"balance_raw_float":  gorm.Expr("balance_raw_float + ?", amountRelIspay),
 		})
 	if res.Error != nil || 1 != res.RowsAffected {
 		return errors.New(500, "UPDATE_USER_ERROR", "one信息修改失败")
 	}
 
-	res = ui.data.DB(ctx).Table("total").Where("id=?", 1).
-		Updates(map[string]interface{}{"one": gorm.Expr("one + ?", amount)})
-	if res.Error != nil || 1 != res.RowsAffected {
-		return errors.New(500, "UPDATE_USER_ERROR", "one信息修改失败")
-	}
+	//res = ui.data.DB(ctx).Table("total").Where("id=?", 1).
+	//	Updates(map[string]interface{}{"one": gorm.Expr("one + ?", amount)})
+	//if res.Error != nil || 1 != res.RowsAffected {
+	//	return errors.New(500, "UPDATE_USER_ERROR", "one信息修改失败")
+	//}
 
 	var buyRecord BuyRecord
 	buyRecord.UserId = userId
@@ -4203,7 +4202,6 @@ func (ui *UserInfoRepo) UpdateUserNewNewNew(ctx context.Context, userId int64, a
 
 	reward.UserId = userId
 	reward.AmountNew = amountRel
-	reward.AmountNewTwo = amountRelIspay
 	reward.Type = "USDT"  // 本次分红的行为类型
 	reward.Reason = "buy" // 给我分红的理由
 	res = ui.data.DB(ctx).Table("reward").Create(&reward)
@@ -4479,7 +4477,7 @@ func (ui *UserInfoRepo) UpdateUserRewardRecommendFourNew(ctx context.Context, us
 }
 
 // UpdateUserRewardRecommend2New .
-func (ui *UserInfoRepo) UpdateUserRewardRecommend2New(ctx context.Context, userId int64, usdt float64, address string) error {
+func (ui *UserInfoRepo) UpdateUserRewardRecommend2New(ctx context.Context, userId, i int64, usdt float64, address string) error {
 	var err error
 
 	if 0 < usdt {
@@ -4498,6 +4496,7 @@ func (ui *UserInfoRepo) UpdateUserRewardRecommend2New(ctx context.Context, userI
 		reward.AmountNew = usdt
 		reward.AmountNewTwo = 0
 		reward.Address = address
+		reward.TypeRecordId = i
 		reward.Reason = "recommend" // 直推
 		res = ui.data.DB(ctx).Table("reward").Create(&reward)
 		if res.Error != nil || 1 != res.RowsAffected {
