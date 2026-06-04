@@ -562,6 +562,7 @@ var lockBuy sync.Mutex
 
 // Buy  buySomething.
 func (a *AppService) Buy(ctx context.Context, req *v1.BuyRequest) (*v1.BuyReply, error) {
+	return nil, nil
 	// 在上下文 context 中取出 claims 对象
 	var (
 		err    error
