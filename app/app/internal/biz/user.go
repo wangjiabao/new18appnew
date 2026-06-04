@@ -992,17 +992,17 @@ func (uuc *UserUseCase) UserInfo(ctx context.Context, user *User) (*v1.UserInfoR
 	}
 
 	tmpLevel := uint64(0)
-	if 1500000 <= tmpAreaMin {
-		tmpLevel = 5
-	} else if 500000 <= tmpAreaMin {
-		tmpLevel = 4
-	} else if 150000 <= tmpAreaMin {
-		tmpLevel = 3
-	} else if 50000 <= tmpAreaMin {
-		tmpLevel = 2
-	} else if 10000 <= tmpAreaMin {
-		tmpLevel = 1
-	}
+	//if 1500000 <= tmpAreaMin {
+	//	tmpLevel = 5
+	//} else if 500000 <= tmpAreaMin {
+	//	tmpLevel = 4
+	//} else if 150000 <= tmpAreaMin {
+	//	tmpLevel = 3
+	//} else if 50000 <= tmpAreaMin {
+	//	tmpLevel = 2
+	//} else if 10000 <= tmpAreaMin {
+	//	tmpLevel = 1
+	//}
 
 	if 0 < myUser.VipAdmin {
 		tmpLevel = uint64(myUser.VipAdmin)
